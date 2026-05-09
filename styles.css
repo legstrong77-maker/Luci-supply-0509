@@ -657,27 +657,40 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 .sponsor-visual{
   position: relative;
-  aspect-ratio: 1; max-width: 420px; margin: 0 auto;
+  width: min(420px, 100%);
+  height: min(420px, 90vw);
+  margin: 0 auto;
   display:flex; align-items:center; justify-content:center;
+  flex-shrink: 0;
 }
 .ring{
-  position:absolute; inset:0;
+  position:absolute; top:0; left:0; right:0; bottom:0;
   border: 1px solid var(--line);
   border-radius: 50%;
   animation: spin 30s linear infinite;
+  pointer-events: none;
 }
-.ring.r2{ inset: 12%; border-color: var(--bark-soft); animation-duration: 24s; animation-direction: reverse; }
-.ring.r3{ inset: 24%; border-color: var(--terra-soft); animation-duration: 18s; }
+.ring.r2{ top:12%; left:12%; right:12%; bottom:12%; border-color: var(--bark-soft); animation-duration: 24s; animation-direction: reverse; }
+.ring.r3{ top:24%; left:24%; right:24%; bottom:24%; border-color: var(--terra-soft); animation-duration: 18s; }
+.ring::before{
+  content:""; position:absolute; top:-3px; left:50%;
+  width: 6px; height: 6px; border-radius:50%;
+  background: var(--terra);
+  transform: translateX(-50%);
+}
+.ring.r2::before{ background: var(--bark-soft); }
+.ring.r3::before{ background: var(--gold); }
 @keyframes spin{ to{ transform: rotate(360deg); } }
 .sponsor-logo{
   position: relative; z-index: 2;
-  width: 50%; aspect-ratio: 1; border-radius:50%;
+  width: 45%; height: 45%; border-radius:50%;
   background: var(--moss-deep);
   color: var(--cream);
   display:flex; align-items:center; justify-content:center;
   font-family: var(--serif); font-style: italic;
-  font-size: clamp(64px, 8vw, 110px);
+  font-size: clamp(56px, 7vw, 96px);
   font-weight: 500;
+  box-shadow: 0 20px 50px -10px rgba(29,36,25,.4);
 }
 
 /* ----- Footer ----- */
