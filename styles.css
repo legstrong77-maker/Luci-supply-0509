@@ -166,12 +166,12 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 .hero-img{
   position:absolute; inset:0;
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   background-color: var(--moss-deep);
-  /* Image stacks ON TOP of gradient fallback. If image 404s, gradient remains visible. */
+  /* Hero: 嘉南雲峰步道紀念石碑（紅字）*/
   background-image:
-    linear-gradient(180deg, rgba(29,36,25,.15) 0%, rgba(29,36,25,.45) 60%, rgba(29,36,25,.85) 100%),
-    url('images/hero.jpg'),
+    linear-gradient(180deg, rgba(29,36,25,.25) 0%, rgba(29,36,25,.45) 55%, rgba(29,36,25,.85) 100%),
+    url('images/7FE73BE1-64F0-4EBB-AD23-FE4B998C4F7E.jpeg'),
     radial-gradient(ellipse at 30% 25%, #4a5f4d, #1d2419 70%);
   filter: saturate(1.05);
   animation: heroZoom 18s var(--ease-soft) infinite alternate;
@@ -820,8 +820,8 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   background-size:cover; background-position:center;
   background-color: var(--moss-deep);
   background-image:
-    linear-gradient(135deg, rgba(29,36,25,.65), rgba(29,36,25,.5)),
-    url('images/join-bg.jpg'),
+    linear-gradient(135deg, rgba(29,36,25,.7), rgba(29,36,25,.55)),
+    url('images/IMG_5426.jpeg'),
     repeating-linear-gradient(86deg,
       #2d3a2d 0 8px, #3e5641 8px 18px, #233028 18px 28px, #4a5f4d 28px 38px),
     linear-gradient(135deg, #233028 0%, #3e5641 100%);

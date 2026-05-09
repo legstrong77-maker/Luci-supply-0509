@@ -7,7 +7,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, "claude/hiking-club-website-YB5qy"]
   workflow_dispatch:
 
 permissions:
@@ -21,8 +21,6 @@ concurrency:
 
 jobs:
   deploy:
-    # 不擋 PR；若 Pages 還沒在 Settings 啟用，此 job 會 skip 而非紅燈
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -33,7 +31,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        continue-on-error: true
+        with:
+          enablement: true   # 自動啟用 GitHub Pages（不用手動到 Settings 開）
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
