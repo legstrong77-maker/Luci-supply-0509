@@ -512,6 +512,68 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   font-family: var(--mono);
 }
 
+/* Single feature stat layout — "4 場 / 年度登山活動" + 春夏秋冬 */
+.story-stats.single{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.stat-feature{
+  flex-direction: row;
+  align-items: baseline;
+  gap: 14px;
+}
+.stat-feature .stat-num{
+  font-size: clamp(72px, 9vw, 128px);
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--moss-deep) 0%, var(--moss) 50%, var(--terra) 110%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -.02em;
+}
+.stat-feature .stat-label{
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.1vw, 16px);
+  text-transform: none;
+  letter-spacing: .12em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.stat-seasons{
+  display: flex; align-items: center;
+  gap: 14px;
+  font-family: var(--serif);
+  font-size: clamp(18px, 1.8vw, 24px);
+  color: var(--moss-deep);
+  letter-spacing: .25em;
+  padding-bottom: 8px;
+  position: relative;
+  flex-wrap: wrap;
+}
+.stat-seasons .dot{
+  color: var(--terra);
+  opacity: .7;
+  font-size: .7em;
+}
+.stat-seasons em{
+  flex-basis: 100%;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .25em;
+  color: var(--bark);
+  opacity: .7;
+  margin-top: 6px;
+  font-weight: 500;
+}
+@media (max-width: 640px){
+  .story-stats.single{ flex-direction: column; align-items: flex-start; gap: 22px; }
+  .stat-seasons{ font-size: 18px; gap: 10px; }
+}
+
 .story-images{
   position:relative;
   aspect-ratio: 4/5;
