@@ -411,8 +411,113 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 /* Fallback bg when images missing */
 .story-img img[src=""], .story-img img:not([src]){ display:none; }
-.story-img-1{ background: linear-gradient(135deg, #4a5f4d, #233028); }
-.story-img-2{ background: linear-gradient(135deg, #b75d3a, #6b513a); }
+
+/* ========== SVG art placeholders ==========
+   Used when real photos haven't been dropped into images/ yet.
+   Each is a hand-drawn-feel illustration of the trail's signature scene. */
+.art-bamboo{
+  background:
+    linear-gradient(180deg, rgba(243,237,226,.0) 60%, rgba(29,36,25,.25)),
+    repeating-linear-gradient(86deg,
+      #5b7a4f 0 6px, #6c8a5c 6px 14px, #4d6a45 14px 22px,
+      #80a06d 22px 30px, #5b7a4f 30px 44px),
+    radial-gradient(ellipse at 50% -10%, #b8d4a6 0%, #6c8a5c 40%, #2d3a2d 100%);
+  background-blend-mode: normal, multiply, normal;
+  position: relative;
+}
+.art-bamboo::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 20% 70%, rgba(255,255,255,.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.12), transparent 25%);
+}
+.art-stone{
+  background:
+    linear-gradient(160deg, #8b7560 0%, #6b513a 45%, #4a3a2a 100%),
+    radial-gradient(ellipse at 30% 30%, rgba(199,107,69,.4), transparent 60%);
+  background-blend-mode: multiply;
+  position: relative;
+}
+.art-stone::after{
+  content:"嘉南雲峰\A 步道";
+  white-space: pre;
+  position:absolute; left:50%; top:42%; transform: translate(-50%,-50%);
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 44px);
+  color: rgba(199,93,58,.85);
+  letter-spacing: .2em; line-height: 1.4;
+  text-align:center; font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+.art-sign{
+  background: linear-gradient(180deg, #5b7a4f 0%, #2d3a2d 100%);
+  position: relative;
+}
+.art-sign::after{
+  content:"石壁山\A 小百岳 #55\A 1,751 m";
+  white-space: pre;
+  position:absolute; left:50%; top:50%; transform: translate(-50%, -50%) rotate(-2deg);
+  background: #5a3f24;
+  color: #f3d250;
+  padding: 18px 26px;
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.4vw, 18px);
+  letter-spacing: .15em; line-height: 1.7;
+  text-align:center;
+  border: 2px solid rgba(243,210,80,.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+}
+.art-team{
+  background:
+    radial-gradient(ellipse at center, #7a8a5e 0%, #3e5641 60%, #1d2419 100%);
+  position: relative;
+}
+.art-team::after{
+  content:"✌  ✌  ✌";
+  position:absolute; left:50%; top:50%;
+  transform: translate(-50%,-50%);
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: .3em;
+  opacity:.65;
+}
+.art-mountain{
+  background:
+    linear-gradient(180deg, #8aa5b8 0%, #c9a14a 60%, #6b513a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.art-mountain::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height: 60%;
+  background:
+    linear-gradient(135deg, transparent 0%, transparent 35%, #233028 35%, #233028 50%, transparent 50%) 0 100%/50% 100% no-repeat,
+    linear-gradient(225deg, transparent 0%, transparent 30%, #2d3a2d 30%, #2d3a2d 50%, transparent 50%) 50% 100%/50% 100% no-repeat,
+    linear-gradient(180deg, transparent 0%, #1d2419 100%);
+}
+.art-forest{
+  background:
+    repeating-linear-gradient(90deg,
+      #2d3a2d 0 12px, #3e5641 12px 26px, #233028 26px 40px),
+    linear-gradient(180deg, #80a06d 0%, #2d3a2d 100%);
+  background-blend-mode: multiply;
+  position: relative;
+}
+.art-forest::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,247,200,.25), transparent 30%),
+    radial-gradient(ellipse at 70% 60%, rgba(255,247,200,.12), transparent 25%);
+}
+/* When real <img> loads, hide the ::after caption so photo shows clean */
+.art-bamboo img:not([src=""]):not(.broken),
+.art-stone img:not([src=""]):not(.broken),
+.art-sign img:not([src=""]):not(.broken),
+.art-team img:not([src=""]):not(.broken),
+.art-mountain img:not([src=""]):not(.broken),
+.art-forest img:not([src=""]):not(.broken){
+  position: relative; z-index: 2;
+}
 
 /* ----- Trail of the month ----- */
 .trail{
@@ -477,6 +582,123 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 .card-list li span{ color: var(--bark); letter-spacing: .05em; }
 .card-list li strong{ font-weight: 500; color: var(--ink); }
+
+/* ----- Trip Recap (Garmin) ----- */
+.recap{
+  background: var(--paper);
+  border-top: 1px solid var(--line-soft);
+}
+.recap-title{
+  font-size: clamp(32px, 4.6vw, 64px);
+}
+.recap-title .serif-italic{ white-space: nowrap; }
+.recap-grid{
+  max-width: var(--max); margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+}
+.recap-stats{
+  display:grid; grid-template-columns: repeat(2, 1fr);
+  gap: 28px 36px;
+  margin: 40px 0 30px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.rstat{ display:flex; flex-direction:column; gap:6px; }
+.rstat-num{
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 500;
+  color: var(--moss-deep);
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.rstat-num small{
+  font-size: .42em;
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--bark);
+  margin-left: 6px;
+  letter-spacing: .12em;
+}
+.rstat-label{
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: .25em;
+  color: var(--bark);
+  text-transform: uppercase;
+}
+.recap-meta{
+  display:flex; flex-wrap:wrap; gap: 20px 32px;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--ink-soft);
+}
+.recap-meta em{
+  font-style:normal;
+  display:inline-block;
+  padding: 2px 8px;
+  background: var(--cream);
+  margin-right: 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  color: var(--bark);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* Garmin-style map */
+.recap-map{ }
+.map-frame{
+  background: #d8e8d6;
+  border-radius: 6px;
+  padding: 16px;
+  position: relative;
+  box-shadow: 0 30px 60px -28px rgba(29,36,25,.35);
+  border: 1px solid var(--line);
+}
+.map-ui{
+  position:relative;
+  background: #e6f0e0;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 1;
+}
+.map-svg{ display:block; width:100%; height:100%; }
+.map-dot{
+  position:absolute; width: 14px; height: 14px;
+  border-radius: 50%; border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25);
+  z-index: 3;
+}
+.map-dot.dot-start{ left: 50%; top: 15%; transform: translate(-50%, -50%); background: #3a6ea5; }
+.map-dot.dot-end{ left: 85%; top: 72.5%; transform: translate(-50%, -50%); background: #e8504a; }
+.map-label{
+  position:absolute; z-index:3;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .2em; padding: 4px 10px;
+  background: rgba(255,255,255,.92);
+  border-radius: 4px;
+  color: var(--ink);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.map-label.start{ left: 52%; top: 8%; }
+.map-label.end{ left: 60%; top: 78%; }
+.map-legend{
+  display:flex; align-items:center;
+  gap: 14px; margin-top: 14px;
+  padding: 0 6px;
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .15em;
+  color: var(--ink-soft);
+}
+.map-legend em{ font-style:normal; flex-shrink:0; }
+.legend-bar{
+  flex: 1; height: 6px; border-radius: 3px;
+  background: linear-gradient(90deg, #3a6ea5 0%, #5fb14b 33%, #f3d250 66%, #e8504a 100%);
+}
 
 /* ----- Quote ----- */
 .quote{
@@ -568,8 +790,10 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   background-size:cover; background-position:center;
   background-color: var(--moss-deep);
   background-image:
-    linear-gradient(135deg, rgba(29,36,25,.55), rgba(29,36,25,.65)),
+    linear-gradient(135deg, rgba(29,36,25,.65), rgba(29,36,25,.5)),
     url('images/join-bg.jpg'),
+    repeating-linear-gradient(86deg,
+      #2d3a2d 0 8px, #3e5641 8px 18px, #233028 18px 28px, #4a5f4d 28px 38px),
     linear-gradient(135deg, #233028 0%, #3e5641 100%);
   z-index: 0;
 }
@@ -770,6 +994,9 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 
   .story-grid{ grid-template-columns: 1fr; gap: 60px; }
   .story-images{ aspect-ratio: 4/3; min-height: 380px; }
+
+  .recap-grid{ grid-template-columns: 1fr; gap: 50px; }
+  .recap-stats{ grid-template-columns: repeat(2, 1fr); }
 
   .sponsor-inner{ grid-template-columns: 1fr; }
   .sponsor-visual{ order: -1; max-width: 280px; }

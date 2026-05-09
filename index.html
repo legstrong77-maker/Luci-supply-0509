@@ -149,11 +149,11 @@
     </div>
 
     <div class="story-images">
-      <figure class="story-img story-img-1 reveal" data-parallax="-0.05">
+      <figure class="story-img story-img-1 reveal art-bamboo" data-parallax="-0.05">
         <img src="images/story-1.jpg" alt="孟宗竹林步道" loading="lazy" />
       </figure>
-      <figure class="story-img story-img-2 reveal" data-parallax="0.08">
-        <img src="images/story-2.jpg" alt="登山紀念碑" loading="lazy" />
+      <figure class="story-img story-img-2 reveal art-stone" data-parallax="0.08">
+        <img src="images/story-2.jpg" alt="嘉南雲峰步道入山紀念碑" loading="lazy" />
         <figcaption>嘉南雲峰步道 · 入山口</figcaption>
       </figure>
     </div>
@@ -192,9 +192,9 @@
       <h3>路線資訊</h3>
       <p>由中路登山口起登，先攻嘉南雲峰，再經好望角抵石壁山，南路登山口下山的 O 形路線。</p>
       <ul class="card-list">
-        <li><span>全程</span><strong>約 8 公里</strong></li>
-        <li><span>落差</span><strong>約 560 m</strong></li>
-        <li><span>耗時</span><strong>4–5 小時</strong></li>
+        <li><span>全程</span><strong>8.69 公里</strong></li>
+        <li><span>累積爬升</span><strong>679 m</strong></li>
+        <li><span>耗時</span><strong>4 小時 31 分</strong></li>
       </ul>
     </article>
 
@@ -222,6 +222,101 @@
   </div>
 </section>
 
+<!-- Trip recap (Garmin) -->
+<section class="recap" id="recap">
+  <div class="recap-grid">
+    <div class="recap-text reveal">
+      <p class="section-eyebrow">— 本次行程紀錄　Garmin Track</p>
+      <h2 class="section-title recap-title">
+        2026.05.09<br/>
+        <span class="serif-italic">嘉南雲峰 × 石壁山</span>
+      </h2>
+      <p class="section-lead">
+        清晨 8:51 自<strong>古坑石壁九芎公廟</strong>起登，
+        穿越孟宗竹海、好望角，至石壁山三角點（小百岳 #55），4 小時 31 分後安然下山。
+      </p>
+
+      <div class="recap-stats">
+        <div class="rstat">
+          <span class="rstat-num">8.69<small>km</small></span>
+          <span class="rstat-label">總距離</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-num">4:31<small>:12</small></span>
+          <span class="rstat-label">總時間</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-num">679<small>m</small></span>
+          <span class="rstat-label">累積爬升</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-num">1,861<small>kcal</small></span>
+          <span class="rstat-label">總熱量</span>
+        </div>
+      </div>
+
+      <div class="recap-meta">
+        <span><em>起登</em> 古坑石壁九芎公廟</span>
+        <span><em>溫度</em> 25°C</span>
+        <span><em>裝置</em> Garmin · 5/9 上午 8:51</span>
+      </div>
+    </div>
+
+    <div class="recap-map reveal">
+      <div class="map-frame">
+        <div class="map-ui">
+          <span class="map-dot dot-start"></span>
+          <span class="map-dot dot-end"></span>
+          <span class="map-label start">START</span>
+          <span class="map-label end">END · 石壁山</span>
+          <svg class="map-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+            <!-- Stylised "Garmin route" — colourful gradient stroke -->
+            <defs>
+              <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"  stop-color="#3a6ea5"/>
+                <stop offset="35%" stop-color="#5fb14b"/>
+                <stop offset="65%" stop-color="#f3d250"/>
+                <stop offset="100%" stop-color="#e8504a"/>
+              </linearGradient>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(29,36,25,.06)" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="400" fill="url(#grid)"/>
+            <!-- Trail path resembling the Garmin O-loop -->
+            <path d="M 200 60
+                     C 230 80, 250 110, 240 140
+                     C 230 165, 195 175, 175 185
+                     C 150 200, 130 215, 140 245
+                     C 150 275, 200 285, 230 270
+                     C 270 255, 300 235, 305 200
+                     C 308 170, 280 150, 265 145
+                     C 240 138, 215 130, 200 120
+                     C 185 108, 175 88, 200 60 Z"
+                  fill="none" stroke="url(#route)" stroke-width="6"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  stroke-dasharray="0" />
+            <!-- Side spur to summit -->
+            <path d="M 305 200 C 330 220, 345 250, 340 290"
+                  fill="none" stroke="url(#route)" stroke-width="6"
+                  stroke-linecap="round" stroke-linejoin="round" opacity=".75" />
+            <!-- Markers -->
+            <circle cx="200" cy="60"  r="9" fill="#fff" stroke="#3a6ea5" stroke-width="3"/>
+            <circle cx="340" cy="290" r="9" fill="#fff" stroke="#e8504a" stroke-width="3"/>
+            <text x="200" y="40"  text-anchor="middle" font-family="Inter,Arial" font-size="11" fill="#3a6ea5" letter-spacing="1.5">九芎公廟</text>
+            <text x="340" y="315" text-anchor="middle" font-family="Inter,Arial" font-size="11" fill="#e8504a" letter-spacing="1.5">石壁山頂</text>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <span class="legend-bar"></span>
+          <em>更慢 · SLOWER</em>
+          <em>更快 · FASTER</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Quote / Pull-out -->
 <section class="quote">
   <div class="quote-inner reveal">
@@ -244,12 +339,12 @@
   </div>
 
   <div class="gallery-grid">
-    <figure class="g-item g-1 reveal"><img src="images/gallery-1.jpg" alt="嘉南雲峰步道紀念碑" loading="lazy" /><figcaption>步道入口 · 紀念石碑</figcaption></figure>
-    <figure class="g-item g-2 reveal"><img src="images/gallery-2.jpg" alt="孟宗竹林" loading="lazy" /><figcaption>孟宗竹海</figcaption></figure>
-    <figure class="g-item g-3 reveal"><img src="images/gallery-3.jpg" alt="登山指示牌" loading="lazy" /><figcaption>石壁山指標</figcaption></figure>
-    <figure class="g-item g-4 reveal"><img src="images/gallery-4.jpg" alt="登山合影" loading="lazy" /><figcaption>同行夥伴</figcaption></figure>
-    <figure class="g-item g-5 reveal"><img src="images/gallery-5.jpg" alt="登山隊伍" loading="lazy" /><figcaption>稜線之上</figcaption></figure>
-    <figure class="g-item g-6 reveal"><img src="images/gallery-6.jpg" alt="森林步道" loading="lazy" /><figcaption>林間漫步</figcaption></figure>
+    <figure class="g-item g-1 reveal art-stone"><img src="images/gallery-1.jpg" alt="嘉南雲峰步道紀念碑" loading="lazy" /><figcaption>步道入口 · 紀念石碑</figcaption></figure>
+    <figure class="g-item g-2 reveal art-bamboo"><img src="images/gallery-2.jpg" alt="孟宗竹林" loading="lazy" /><figcaption>孟宗竹海</figcaption></figure>
+    <figure class="g-item g-3 reveal art-sign"><img src="images/gallery-3.jpg" alt="石壁山指示牌" loading="lazy" /><figcaption>石壁山 · 小百岳 #55 · 1,751 m</figcaption></figure>
+    <figure class="g-item g-4 reveal art-team"><img src="images/gallery-4.jpg" alt="登山合影" loading="lazy" /><figcaption>同行夥伴 · 山頂合影</figcaption></figure>
+    <figure class="g-item g-5 reveal art-mountain"><img src="images/gallery-5.jpg" alt="稜線" loading="lazy" /><figcaption>稜線之上</figcaption></figure>
+    <figure class="g-item g-6 reveal art-forest"><img src="images/gallery-6.jpg" alt="森林步道" loading="lazy" /><figcaption>孟宗竹林全景</figcaption></figure>
   </div>
 </section>
 
