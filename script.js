@@ -217,20 +217,59 @@
     window.addEventListener('load', () => setTimeout(initInteractiveMap, 100));
   }
 
-  // ---------- Hero title line stagger reveal ----------
-  const heroLines = document.querySelectorAll('.hero-title .line');
-  heroLines.forEach((line, i) => {
-    line.style.opacity = '0';
-    line.style.transform = 'translateY(40px)';
-    line.style.transition = `opacity 1.1s ${0.6 + i * 0.18}s cubic-bezier(.22,.61,.36,1), transform 1.1s ${0.6 + i * 0.18}s cubic-bezier(.22,.61,.36,1)`;
-  });
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      heroLines.forEach(line => {
-        line.style.opacity = '1';
-        line.style.transform = 'translateY(0)';
+  // ---------- Hero title — split each Chinese char into <span class="char"> ----------
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    const splitChars = (textNode, baseDelay) => {
+      const text = textNode.textContent;
+      const frag = document.createDocumentFragment();
+      let i = 0;
+      [...text].forEach(ch => {
+        if (ch.trim() === '') {
+          frag.appendChild(document.createTextNode(ch));
+        } else {
+          const s = document.createElement('span');
+          s.className = 'char';
+          s.textContent = ch;
+          s.style.animationDelay = (baseDelay + i * 0.06) + 's';
+          frag.appendChild(s);
+          i++;
+        }
       });
-    }, 1300);
-  });
+      textNode.replaceWith(frag);
+      return i;
+    };
+    // Walk text nodes inside title
+    let totalDelay = 0.7;
+    heroTitle.querySelectorAll('.line').forEach((line) => {
+      const walker = document.createTreeWalker(line, NodeFilter.SHOW_TEXT, null);
+      const textNodes = [];
+      while (walker.nextNode()) textNodes.push(walker.currentNode);
+      textNodes.forEach(tn => {
+        const count = splitChars(tn, totalDelay);
+        totalDelay += count * 0.06;
+      });
+      totalDelay += 0.08;
+    });
+  }
+
+  // ---------- Floating decorative leaves in hero ----------
+  const hero = document.querySelector('.hero');
+  if (hero && !hero.querySelector('.leaf-shower')) {
+    const shower = document.createElement('div');
+    shower.className = 'leaf-shower';
+    shower.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < 8; i++) {
+      const leaf = document.createElement('span');
+      leaf.className = 'leaf';
+      leaf.style.left = (Math.random() * 100) + '%';
+      leaf.style.animationDelay = (Math.random() * 14) + 's';
+      leaf.style.animationDuration = (12 + Math.random() * 10) + 's';
+      leaf.style.opacity = (0.15 + Math.random() * 0.25).toFixed(2);
+      leaf.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 4 C 11 5, 6 9, 5 16 C 5 18, 6 19, 8 19 C 14 19, 19 14, 20 7 C 20 5, 19 4, 17 4 Z M 8 17 C 11 14, 14 11, 17 8" stroke="currentColor" stroke-width=".5" fill="currentColor"/></svg>`;
+      shower.appendChild(leaf);
+    }
+    hero.appendChild(shower);
+  }
 
 })();
