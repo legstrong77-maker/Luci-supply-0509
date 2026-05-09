@@ -4,10 +4,25 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>璨榮會登山聯誼會 ｜ Lucidity Hiking Club</title>
-<meta name="description" content="璨榮會登山聯誼會 — 一群熱愛山林、踏遍寶島的同事與朋友。由璨揚企業同仁發起，邀您一同走進雲嘉南峰、石壁山，與山相遇。" />
+<meta name="description" content="璨榮會登山聯誼會 — 一群熱愛山林、踏遍寶島的同事與朋友。由璨揚企業同仁發起，邀您一同走進嘉南雲峰、石壁山，與山相遇。" />
+<meta name="keywords" content="璨榮會,登山聯誼會,璨揚企業,Lucidity,嘉南雲峰,石壁山,雲林古坑,登山,小百岳,孟宗竹林" />
+<meta name="author" content="璨榮會登山聯誼會 · 璨揚企業" />
+<meta name="theme-color" content="#3e5641" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="璨榮會登山聯誼會 ｜ Lucidity Hiking Club" />
+<meta property="og:description" content="走進雲霧，與山相遇。本月山徑：嘉南雲峰 · 石壁山，雲林古坑，海拔 1,795 m。" />
+<meta property="og:image" content="images/hero.jpg" />
+<meta property="og:locale" content="zh_TW" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="璨榮會登山聯誼會 ｜ Lucidity Hiking Club" />
+<meta name="twitter:description" content="走進雲霧，與山相遇。嘉南雲峰 · 石壁山。" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -59,7 +74,7 @@
   </div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow"><span></span>Vol. 05 · 2026 春</p>
+    <p class="hero-eyebrow"><span></span>2026 春季 · 璨揚供應商聯誼登山　Vol. 01</p>
     <h1 class="hero-title">
       <span class="line"><em>走進雲霧</em></span>
       <span class="line">與山<span class="serif-italic">相遇</span></span>
@@ -87,16 +102,17 @@
 <!-- Marquee -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
+    <span>璨揚 × 供應商聯誼登山</span><span>✦</span>
     <span>嘉南雲峰 · JIANANYUN PEAK</span><span>✦</span>
     <span>石壁山 · MT. SHIBI</span><span>✦</span>
     <span>海拔 1,795 m</span><span>✦</span>
+    <span>一年四季 · 山林同行</span><span>✦</span>
     <span>孟宗竹林 · BAMBOO FOREST</span><span>✦</span>
-    <span>雲林古坑 · GUKENG, YUNLIN</span><span>✦</span>
-    <span>璨榮會登山聯誼會</span><span>✦</span>
+    <span>璨揚 × 供應商聯誼登山</span><span>✦</span>
     <span>嘉南雲峰 · JIANANYUN PEAK</span><span>✦</span>
     <span>石壁山 · MT. SHIBI</span><span>✦</span>
     <span>海拔 1,795 m</span><span>✦</span>
-    <span>孟宗竹林 · BAMBOO FOREST</span><span>✦</span>
+    <span>一年四季 · 山林同行</span><span>✦</span>
   </div>
 </div>
 
@@ -110,37 +126,38 @@
         我們<span class="serif-italic">同行</span>。
       </h2>
       <p class="section-lead">
-        璨榮會登山聯誼會，由<strong>璨揚企業</strong>同仁與眷屬自發組成，每月一座山，每季一次遠行。
-        我們不追逐里程，也不只為登頂——我們在意一起呼吸的節奏，在意每一次回望時，
-        身邊還有那些一起出發的人。
+        璨榮會是<strong>璨揚企業</strong>與全體<strong>供應商夥伴</strong>共同組成的聯誼會。
+        每年舉辦<strong>四場登山活動</strong>，讓平日各自忙碌於工廠、產線、貿易與物流的我們，
+        有機會走出辦公室、放下訂單與報表，在山林裡重新認識彼此。
       </p>
       <p class="section-body">
-        從新手到百岳老腳，這裡沒有快慢，只有同行。竹林裡的風、稜線上的雲、午後的陽光斜斜灑下，
-        我們把這些瞬間留下，留給每一位願意走進山林的你。
+        我們相信，最穩固的合作關係不只在會議桌上；
+        而是在一起喘氣登頂、一起在涼亭分食午餐、一起在竹林裡聽風的那些片刻。
+        每年春、夏、秋、冬各一次，從新手到百岳老腳，沒有快慢，只有同行。
       </p>
       <div class="story-stats">
         <div class="stat">
-          <span class="stat-num" data-count="48">0</span>
-          <span class="stat-label">年度共行山徑</span>
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label">年度登山活動</span>
         </div>
         <div class="stat">
           <span class="stat-num" data-count="126">0</span>
-          <span class="stat-label">會員人數</span>
+          <span class="stat-label">夥伴成員</span>
         </div>
         <div class="stat">
-          <span class="stat-num" data-count="12">0</span>
-          <span class="stat-label">平均每月聚會</span>
+          <span class="stat-num" data-count="20">0</span>
+          <span class="stat-label">供應商夥伴</span>
         </div>
       </div>
     </div>
 
     <div class="story-images">
       <figure class="story-img story-img-1 reveal" data-parallax="-0.05">
-        <img src="images/story-1.jpg" alt="孟宗竹林步道" loading="lazy" />
+        <img src="images/IMG_5420.jpeg" alt="仰拍孟宗竹海" loading="lazy" />
       </figure>
       <figure class="story-img story-img-2 reveal" data-parallax="0.08">
-        <img src="images/story-2.jpg" alt="登山紀念碑" loading="lazy" />
-        <figcaption>嘉南雲峰步道 · 入山口</figcaption>
+        <img src="images/3FFAD79A-5644-48C3-8B8C-6C03CA11C9B5.jpeg" alt="九芎神木 · 登山口" loading="lazy" />
+        <figcaption>九芎神木 · 登山口</figcaption>
       </figure>
     </div>
   </div>
@@ -149,16 +166,31 @@
 <!-- Trail of the month -->
 <section class="trail" id="trail">
   <div class="trail-header reveal">
-    <p class="section-eyebrow">— 本月山徑　Trail of the Month</p>
+    <p class="section-eyebrow">— 本季山徑　Trail of the Quarter</p>
     <h2 class="section-title">
       雲林最高峰，<br/>
       <span class="serif-italic">嘉南雲峰</span> ＆ <span class="serif-italic">石壁山</span>
     </h2>
     <p class="section-lead">
-      因位於嘉義、南投、雲林三縣交界而得名「嘉南雲峰」。
-      翠綠的孟宗竹林全程幾乎曬不到太陽，石壁山與好望角視野極佳，
-      可遠眺玉山群峰與阿里山連稜，是雲林最具代表性的中級山。
+      位於<strong>嘉義、南投、雲林</strong>三縣交界而得名「嘉南雲峰」，
+      海拔 <strong>1,795 公尺</strong>，是<strong>雲林縣境第一高峰</strong>。
+      與其相連的<strong>石壁山</strong>（1,751 m）為「<strong>台灣小百岳 #55</strong>」之一，
+      兩座山頭間以稜線串起，形成最具代表性的雲林中級山縱走路線。
     </p>
+    <p class="section-lead trail-lead-2">
+      自古坑石壁九芎公廟登山口起登，全程穿越<strong>蓊鬱孟宗竹海</strong>，竹影斑駁、終日不見烈日；
+      抵達<strong>好望角</strong>展望點時視野倏然開闊，可遠眺<strong>玉山群峰、阿里山連稜與清水溪谷</strong>，
+      天氣好時甚至能望見彰化平原。一路上泥徑、木階、岩石交錯，是體能、節奏與山林美感並重的經典路線。
+    </p>
+
+    <ul class="trail-tags">
+      <li>雲林最高峰</li>
+      <li>小百岳 #55</li>
+      <li>O 形縱走</li>
+      <li>孟宗竹海</li>
+      <li>中級山</li>
+      <li>好望角展望</li>
+    </ul>
   </div>
 
   <div class="trail-cards">
@@ -178,9 +210,9 @@
       <h3>路線資訊</h3>
       <p>由中路登山口起登，先攻嘉南雲峰，再經好望角抵石壁山，南路登山口下山的 O 形路線。</p>
       <ul class="card-list">
-        <li><span>全程</span><strong>約 8 公里</strong></li>
-        <li><span>落差</span><strong>約 560 m</strong></li>
-        <li><span>耗時</span><strong>4–5 小時</strong></li>
+        <li><span>全程</span><strong>8.69 公里</strong></li>
+        <li><span>累積爬升</span><strong>679 m</strong></li>
+        <li><span>耗時</span><strong>4 小時 31 分</strong></li>
       </ul>
     </article>
 
@@ -208,6 +240,61 @@
   </div>
 </section>
 
+<!-- Trip recap (Garmin) -->
+<section class="recap" id="recap">
+  <div class="recap-grid">
+    <div class="recap-text reveal">
+      <p class="section-eyebrow">— 本次行程紀錄　Garmin Track</p>
+      <h2 class="section-title recap-title">
+        2026.05.09<br/>
+        <span class="serif-italic">嘉南雲峰 × 石壁山</span>
+      </h2>
+      <p class="section-lead">
+        清晨 8:51 自<strong>古坑石壁九芎公廟</strong>起登，
+        穿越孟宗竹海、好望角，至石壁山三角點（小百岳 #55），4 小時 31 分後安然下山。
+      </p>
+
+      <div class="recap-stats">
+        <div class="rstat">
+          <span class="rstat-num">8.69<small>km</small></span>
+          <span class="rstat-label">總距離</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-num">4:31<small>:12</small></span>
+          <span class="rstat-label">總時間</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-num">679<small>m</small></span>
+          <span class="rstat-label">累積爬升</span>
+        </div>
+        <div class="rstat">
+          <span class="rstat-num">1,861<small>kcal</small></span>
+          <span class="rstat-label">總熱量</span>
+        </div>
+      </div>
+
+      <div class="recap-meta">
+        <span><em>起登</em> 古坑石壁九芎公廟</span>
+        <span><em>溫度</em> 25°C</span>
+        <span><em>裝置</em> Garmin · 5/9 上午 8:51</span>
+      </div>
+    </div>
+
+    <div class="recap-map reveal">
+      <figure class="map-frame interactive-map">
+        <div id="trackMap" class="leaflet-map" data-gpx="track.gpx" data-fallback-src="images/8E00840A-8FC5-4D4C-9926-42EBFCF5E0C2.jpeg"></div>
+        <div class="map-hint">點圖啟用滾輪縮放　·　拖曳移動　·　雙指縮放</div>
+        <figcaption>互動軌跡 · GPS Track · 古坑石壁九芎公廟 → 嘉南雲峰 → 石壁山 → 好望角</figcaption>
+      </figure>
+
+      <figure class="elevation-frame">
+        <img class="elev-img" src="images/BEC7FC68-E175-4331-AAF2-31AF437F3C03.jpeg" alt="嘉南雲峰高度圖 1,200m – 1,800m" loading="lazy" />
+        <figcaption>高度剖面 · 累計爬升 681 m · 最高 1,795 m</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- Quote / Pull-out -->
 <section class="quote">
   <div class="quote-inner reveal">
@@ -230,12 +317,18 @@
   </div>
 
   <div class="gallery-grid">
-    <figure class="g-item g-1 reveal"><img src="images/gallery-1.jpg" alt="嘉南雲峰步道紀念碑" loading="lazy" /><figcaption>步道入口 · 紀念石碑</figcaption></figure>
-    <figure class="g-item g-2 reveal"><img src="images/gallery-2.jpg" alt="孟宗竹林" loading="lazy" /><figcaption>孟宗竹海</figcaption></figure>
-    <figure class="g-item g-3 reveal"><img src="images/gallery-3.jpg" alt="登山指示牌" loading="lazy" /><figcaption>石壁山指標</figcaption></figure>
-    <figure class="g-item g-4 reveal"><img src="images/gallery-4.jpg" alt="登山合影" loading="lazy" /><figcaption>同行夥伴</figcaption></figure>
-    <figure class="g-item g-5 reveal"><img src="images/gallery-5.jpg" alt="登山隊伍" loading="lazy" /><figcaption>稜線之上</figcaption></figure>
-    <figure class="g-item g-6 reveal"><img src="images/gallery-6.jpg" alt="森林步道" loading="lazy" /><figcaption>林間漫步</figcaption></figure>
+    <figure class="g-item g-1 reveal"><img src="images/F91BE103-6327-4BFD-B587-5EAC2D2BF088.jpeg" alt="石壁山 · 小百岳 #55 · 三角點合影" loading="lazy" /><figcaption>石壁山 · 小百岳 #55 · 1,751 m</figcaption></figure>
+    <figure class="g-item g-2 reveal"><img src="images/A6455938-AEEF-4D12-AA1C-9ED16321199C.jpeg" alt="嘉南雲峰步道紀念碑前合影" loading="lazy" /><figcaption>步道入口 · 紀念碑前合影</figcaption></figure>
+    <figure class="g-item g-3 reveal"><img src="images/3EEF7875-3D32-44AC-956B-91BA44D3A5C8.jpeg" alt="好望角指示牌" loading="lazy" /><figcaption>好望角 · Cape of Good Hope</figcaption></figure>
+    <figure class="g-item g-4 reveal"><img src="images/B2209818-3C58-4580-B67B-13A5B86FB234.jpeg" alt="孟宗竹海中夥伴合影" loading="lazy" /><figcaption>竹海中的笑容</figcaption></figure>
+    <figure class="g-item g-5 reveal"><img src="images/9D5A524B-8933-4D5F-BE7C-50B7282F3620.jpeg" alt="隊伍上山" loading="lazy" /><figcaption>一步一山 · 同行</figcaption></figure>
+    <figure class="g-item g-6 reveal"><img src="images/IMG_5424.jpeg" alt="好望角遠眺" loading="lazy" /><figcaption>好望角 · 遠眺玉山阿里山連稜</figcaption></figure>
+    <figure class="g-item g-7 reveal"><img src="images/8A35FC4A-CE73-4D24-A0A4-388B5D03FD9D.jpeg" alt="涼亭休息合影" loading="lazy" /><figcaption>嘉南雲峰大涼亭 · 中途歇腳</figcaption></figure>
+    <figure class="g-item g-8 reveal"><img src="images/77DA0013-7AA2-418A-BFEB-A651C34664C6.jpeg" alt="嘉南雲峰山頂 1795 公尺" loading="lazy" /><figcaption>嘉南雲峰 · 1,795 m · 雲林最高峰</figcaption></figure>
+    <figure class="g-item g-9 reveal"><img src="images/BCC0AD18-4DA3-40AF-AA95-524099B6B29B.jpeg" alt="孟宗竹海全景" loading="lazy" /><figcaption>孟宗竹海</figcaption></figure>
+    <figure class="g-item g-10 reveal"><img src="images/55C7889E-FF17-4EA0-B16F-AE154FC57883.jpeg" alt="山頂 4 人合影" loading="lazy" /><figcaption>山頂時光</figcaption></figure>
+    <figure class="g-item g-11 reveal"><img src="images/D3FFC90F-53E1-434B-8169-474EB27C7D04.jpeg" alt="嘉南雲峰步道指示牌" loading="lazy" /><figcaption>步道里程指標</figcaption></figure>
+    <figure class="g-item g-12 reveal"><img src="images/IMG_5419.jpeg" alt="竹海中的木階" loading="lazy" /><figcaption>竹海中的木階</figcaption></figure>
   </div>
 </section>
 
@@ -250,31 +343,31 @@
       <span class="serif-italic">和我們一起。</span>
     </h2>
     <p class="join-lead">
-      無論你是初次嘗試的新手，或是踏遍百岳的老腳，
-      璨榮會歡迎所有願意一同上山的夥伴。每月例行登山、季度遠征、年度旗艦行，
-      一年裡，總有一座山在等你。
+      璨榮會歡迎所有璨揚的供應商夥伴及同仁加入。
+      一年四季各一場登山活動，從輕鬆步道到中級山縱走輪替，
+      不論你是百岳老腳或剛開始的新手，都能在這裡找到屬於你的步調。
     </p>
 
     <div class="join-features">
       <div class="feat">
-        <span class="feat-icon">⛰</span>
-        <h4>每月例行</h4>
-        <p>輕中重級山徑輪替，新手友善</p>
+        <span class="feat-icon">🌸</span>
+        <h4>春</h4>
+        <p>賞花踏青、輕量入門路線</p>
       </div>
       <div class="feat">
-        <span class="feat-icon">⛺</span>
-        <h4>季度遠征</h4>
-        <p>百岳挑戰、海外山旅</p>
+        <span class="feat-icon">☀</span>
+        <h4>夏</h4>
+        <p>高山避暑、稜線縱走</p>
       </div>
       <div class="feat">
-        <span class="feat-icon">📸</span>
-        <h4>影像共享</h4>
-        <p>專業隨隊紀錄，回家有照片</p>
+        <span class="feat-icon">🍁</span>
+        <h4>秋</h4>
+        <p>賞楓季節、中級山挑戰</p>
       </div>
       <div class="feat">
-        <span class="feat-icon">🤝</span>
-        <h4>夥伴同行</h4>
-        <p>跨部門結伴，工作之外的朋友</p>
+        <span class="feat-icon">❄</span>
+        <h4>冬</h4>
+        <p>溫泉行、雪山賞景</p>
       </div>
     </div>
 
@@ -291,12 +384,13 @@
     <div class="sponsor-text">
       <p class="section-eyebrow">— 主辦單位</p>
       <h3 class="sponsor-title">
-        由 <span class="serif-italic">璨揚企業</span> 同仁共同發起
+        由 <span class="serif-italic">璨揚企業</span> 與供應商夥伴共同發起
       </h3>
       <p>
         璨揚企業（Lucidity）創立於 1981 年，是全球商用車燈具的領導品牌之一，
         以「Lucidity—點亮道路、點亮生活」為理念。
-        璨榮會延續璨揚對「光」與「人」的關心，將工作之外的時光，留給家人、夥伴與山林。
+        璨榮會由璨揚與長期合作的供應商夥伴共同發起，
+        每年四場登山活動，把工作之外的時光，留給彼此與山林。
       </p>
       <ul class="sponsor-points">
         <li><strong>1981</strong>創立年份</li>
@@ -357,6 +451,8 @@
   </div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet-gpx@2.1.2/gpx.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

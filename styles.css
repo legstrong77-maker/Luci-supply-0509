@@ -166,12 +166,12 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
 .hero-img{
   position:absolute; inset:0;
   background-size: cover;
-  background-position: center;
+  background-position: center 30%;
   background-color: var(--moss-deep);
-  /* Image stacks ON TOP of gradient fallback. If image 404s, gradient remains visible. */
+  /* Hero: 嘉南雲峰步道紀念石碑（紅字）*/
   background-image:
-    linear-gradient(180deg, rgba(29,36,25,.15) 0%, rgba(29,36,25,.45) 60%, rgba(29,36,25,.85) 100%),
-    url('images/hero.jpg'),
+    linear-gradient(180deg, rgba(29,36,25,.25) 0%, rgba(29,36,25,.45) 55%, rgba(29,36,25,.85) 100%),
+    url('images/7FE73BE1-64F0-4EBB-AD23-FE4B998C4F7E.jpeg'),
     radial-gradient(ellipse at 30% 25%, #4a5f4d, #1d2419 70%);
   filter: saturate(1.05);
   animation: heroZoom 18s var(--ease-soft) infinite alternate;
@@ -411,8 +411,113 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 /* Fallback bg when images missing */
 .story-img img[src=""], .story-img img:not([src]){ display:none; }
-.story-img-1{ background: linear-gradient(135deg, #4a5f4d, #233028); }
-.story-img-2{ background: linear-gradient(135deg, #b75d3a, #6b513a); }
+
+/* ========== SVG art placeholders ==========
+   Used when real photos haven't been dropped into images/ yet.
+   Each is a hand-drawn-feel illustration of the trail's signature scene. */
+.art-bamboo{
+  background:
+    linear-gradient(180deg, rgba(243,237,226,.0) 60%, rgba(29,36,25,.25)),
+    repeating-linear-gradient(86deg,
+      #5b7a4f 0 6px, #6c8a5c 6px 14px, #4d6a45 14px 22px,
+      #80a06d 22px 30px, #5b7a4f 30px 44px),
+    radial-gradient(ellipse at 50% -10%, #b8d4a6 0%, #6c8a5c 40%, #2d3a2d 100%);
+  background-blend-mode: normal, multiply, normal;
+  position: relative;
+}
+.art-bamboo::after{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 20% 70%, rgba(255,255,255,.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.12), transparent 25%);
+}
+.art-stone{
+  background:
+    linear-gradient(160deg, #8b7560 0%, #6b513a 45%, #4a3a2a 100%),
+    radial-gradient(ellipse at 30% 30%, rgba(199,107,69,.4), transparent 60%);
+  background-blend-mode: multiply;
+  position: relative;
+}
+.art-stone::after{
+  content:"嘉南雲峰\A 步道";
+  white-space: pre;
+  position:absolute; left:50%; top:42%; transform: translate(-50%,-50%);
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 44px);
+  color: rgba(199,93,58,.85);
+  letter-spacing: .2em; line-height: 1.4;
+  text-align:center; font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+.art-sign{
+  background: linear-gradient(180deg, #5b7a4f 0%, #2d3a2d 100%);
+  position: relative;
+}
+.art-sign::after{
+  content:"石壁山\A 小百岳 #55\A 1,751 m";
+  white-space: pre;
+  position:absolute; left:50%; top:50%; transform: translate(-50%, -50%) rotate(-2deg);
+  background: #5a3f24;
+  color: #f3d250;
+  padding: 18px 26px;
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.4vw, 18px);
+  letter-spacing: .15em; line-height: 1.7;
+  text-align:center;
+  border: 2px solid rgba(243,210,80,.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,.5);
+}
+.art-team{
+  background:
+    radial-gradient(ellipse at center, #7a8a5e 0%, #3e5641 60%, #1d2419 100%);
+  position: relative;
+}
+.art-team::after{
+  content:"✌  ✌  ✌";
+  position:absolute; left:50%; top:50%;
+  transform: translate(-50%,-50%);
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: .3em;
+  opacity:.65;
+}
+.art-mountain{
+  background:
+    linear-gradient(180deg, #8aa5b8 0%, #c9a14a 60%, #6b513a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.art-mountain::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height: 60%;
+  background:
+    linear-gradient(135deg, transparent 0%, transparent 35%, #233028 35%, #233028 50%, transparent 50%) 0 100%/50% 100% no-repeat,
+    linear-gradient(225deg, transparent 0%, transparent 30%, #2d3a2d 30%, #2d3a2d 50%, transparent 50%) 50% 100%/50% 100% no-repeat,
+    linear-gradient(180deg, transparent 0%, #1d2419 100%);
+}
+.art-forest{
+  background:
+    repeating-linear-gradient(90deg,
+      #2d3a2d 0 12px, #3e5641 12px 26px, #233028 26px 40px),
+    linear-gradient(180deg, #80a06d 0%, #2d3a2d 100%);
+  background-blend-mode: multiply;
+  position: relative;
+}
+.art-forest::after{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,247,200,.25), transparent 30%),
+    radial-gradient(ellipse at 70% 60%, rgba(255,247,200,.12), transparent 25%);
+}
+/* When real <img> loads, hide the ::after caption so photo shows clean */
+.art-bamboo img:not([src=""]):not(.broken),
+.art-stone img:not([src=""]):not(.broken),
+.art-sign img:not([src=""]):not(.broken),
+.art-team img:not([src=""]):not(.broken),
+.art-mountain img:not([src=""]):not(.broken),
+.art-forest img:not([src=""]):not(.broken){
+  position: relative; z-index: 2;
+}
 
 /* ----- Trail of the month ----- */
 .trail{
@@ -424,6 +529,36 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   text-align: center;
 }
 .trail-header .section-lead{ margin-left:auto; margin-right:auto; }
+.trail-lead-2{ max-width: 760px !important; margin-top: -10px !important; }
+.trail-header strong{
+  color: var(--moss-deep);
+  font-weight: 600;
+  background: linear-gradient(transparent 70%, rgba(199,107,69,.18) 70%);
+  padding: 0 2px;
+}
+.trail-tags{
+  list-style:none; padding:0; margin: 36px auto 0;
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap: 10px;
+  max-width: 800px;
+}
+.trail-tags li{
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .15em;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  transition: all .3s var(--ease);
+}
+.trail-tags li:hover{
+  background: var(--moss);
+  color: var(--cream);
+  border-color: var(--moss);
+  transform: translateY(-2px);
+}
 .trail-cards{
   max-width: var(--max); margin: 0 auto;
   display:grid;
@@ -478,6 +613,154 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 .card-list li span{ color: var(--bark); letter-spacing: .05em; }
 .card-list li strong{ font-weight: 500; color: var(--ink); }
 
+/* ----- Trip Recap (Garmin) ----- */
+.recap{
+  background: var(--paper);
+  border-top: 1px solid var(--line-soft);
+}
+.recap-title{
+  font-size: clamp(32px, 4.6vw, 64px);
+}
+.recap-title .serif-italic{ white-space: nowrap; }
+.recap-grid{
+  max-width: var(--max); margin: 0 auto;
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: center;
+}
+.recap-stats{
+  display:grid; grid-template-columns: repeat(2, 1fr);
+  gap: 28px 36px;
+  margin: 40px 0 30px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.rstat{ display:flex; flex-direction:column; gap:6px; }
+.rstat-num{
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 500;
+  color: var(--moss-deep);
+  line-height: 1;
+  letter-spacing: -.01em;
+}
+.rstat-num small{
+  font-size: .42em;
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--bark);
+  margin-left: 6px;
+  letter-spacing: .12em;
+}
+.rstat-label{
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: .25em;
+  color: var(--bark);
+  text-transform: uppercase;
+}
+.recap-meta{
+  display:flex; flex-wrap:wrap; gap: 20px 32px;
+  font-family: var(--mono); font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--ink-soft);
+}
+.recap-meta em{
+  font-style:normal;
+  display:inline-block;
+  padding: 2px 8px;
+  background: var(--cream);
+  margin-right: 8px;
+  border-radius: 2px;
+  font-size: 10px;
+  color: var(--bark);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+/* Real Garmin map + elevation profile */
+.recap-map{
+  display: flex; flex-direction: column; gap: 18px;
+}
+.map-frame, .elevation-frame{
+  margin: 0;
+  background: #fff;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 30px 60px -28px rgba(29,36,25,.35);
+  border: 1px solid var(--line);
+  position: relative;
+}
+.map-img, .elev-img{
+  display:block; width:100%; height:auto;
+  border-radius: 3px;
+  background: #e6f0e0;
+}
+.map-img{
+  max-height: 520px; object-fit: contain;
+  object-position: center;
+}
+.elev-img{
+  max-height: 240px; object-fit: contain;
+  object-position: center;
+}
+.map-frame figcaption,
+.elevation-frame figcaption{
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: var(--bark);
+  text-transform: uppercase;
+  padding: 12px 6px 4px;
+  text-align: center;
+}
+
+/* Leaflet interactive map */
+.leaflet-map{
+  width: 100%;
+  height: 520px;
+  border-radius: 3px;
+  background: #e6f0e0 url('images/8E00840A-8FC5-4D4C-9926-42EBFCF5E0C2.jpeg') center/contain no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.leaflet-map.has-tiles{ background-image: none; }
+.map-hint{
+  position: absolute;
+  top: 22px; left: 22px;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--ink-soft);
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity .4s var(--ease);
+  border: 1px solid var(--line);
+}
+.leaflet-map.scroll-active + .map-hint{ opacity: 0; }
+/* Override Leaflet attribution font */
+.leaflet-control-attribution{
+  font-family: var(--mono);
+  font-size: 10px !important;
+  background: rgba(255,255,255,.85) !important;
+}
+.leaflet-popup-content{
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.leaflet-popup-content strong{ color: var(--moss-deep); }
+
+@media (max-width: 980px){
+  .leaflet-map{ height: 380px; }
+  .map-hint{ font-size: 9.5px; top: 18px; left: 18px; padding: 4px 10px; }
+}
+
 /* ----- Quote ----- */
 .quote{
   background: var(--moss-deep);
@@ -515,8 +798,8 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   max-width: var(--max); margin: 0 auto;
   display:grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 200px;
-  gap: 16px;
+  grid-auto-rows: 180px;
+  gap: 14px;
 }
 .g-item{
   margin: 0; overflow:hidden; position: relative;
@@ -548,12 +831,19 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 .g-item:hover figcaption{ transform: translateY(0); }
 
-.g-1{ grid-column: span 3; grid-row: span 2; }
-.g-2{ grid-column: span 3; grid-row: span 2; }
-.g-3{ grid-column: span 2; grid-row: span 2; }
-.g-4{ grid-column: span 2; grid-row: span 2; }
-.g-5{ grid-column: span 2; grid-row: span 2; }
-.g-6{ grid-column: span 6; grid-row: span 2; }
+/* 12-cell magazine-style masonry */
+.g-1 { grid-column: span 3; grid-row: span 3; }    /* 主合影：石壁山三角點 */
+.g-2 { grid-column: span 3; grid-row: span 2; }    /* 紀念碑合影 */
+.g-3 { grid-column: span 2; grid-row: span 2; }    /* 好望角指示牌 */
+.g-4 { grid-column: span 4; grid-row: span 2; }    /* 竹海合影（橫長） */
+.g-5 { grid-column: span 2; grid-row: span 3; }    /* 隊伍上山 */
+.g-6 { grid-column: span 4; grid-row: span 2; }    /* 好望角遠眺（橫長） */
+.g-7 { grid-column: span 3; grid-row: span 2; }    /* 涼亭合影 */
+.g-8 { grid-column: span 3; grid-row: span 2; }    /* 嘉南雲峰山頂 */
+.g-9 { grid-column: span 2; grid-row: span 2; }    /* 孟宗竹海 */
+.g-10{ grid-column: span 2; grid-row: span 2; }    /* 4 人合影 */
+.g-11{ grid-column: span 2; grid-row: span 2; }    /* 指示牌 */
+.g-12{ grid-column: span 6; grid-row: span 2; }    /* 木階全寬 */
 
 /* ----- Join ----- */
 .join{
@@ -568,8 +858,10 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   background-size:cover; background-position:center;
   background-color: var(--moss-deep);
   background-image:
-    linear-gradient(135deg, rgba(29,36,25,.55), rgba(29,36,25,.65)),
-    url('images/join-bg.jpg'),
+    linear-gradient(135deg, rgba(29,36,25,.7), rgba(29,36,25,.55)),
+    url('images/IMG_5426.jpeg'),
+    repeating-linear-gradient(86deg,
+      #2d3a2d 0 8px, #3e5641 8px 18px, #233028 18px 28px, #4a5f4d 28px 38px),
     linear-gradient(135deg, #233028 0%, #3e5641 100%);
   z-index: 0;
 }
@@ -657,27 +949,40 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 .sponsor-visual{
   position: relative;
-  aspect-ratio: 1; max-width: 420px; margin: 0 auto;
+  width: min(420px, 100%);
+  height: min(420px, 90vw);
+  margin: 0 auto;
   display:flex; align-items:center; justify-content:center;
+  flex-shrink: 0;
 }
 .ring{
-  position:absolute; inset:0;
+  position:absolute; top:0; left:0; right:0; bottom:0;
   border: 1px solid var(--line);
   border-radius: 50%;
   animation: spin 30s linear infinite;
+  pointer-events: none;
 }
-.ring.r2{ inset: 12%; border-color: var(--bark-soft); animation-duration: 24s; animation-direction: reverse; }
-.ring.r3{ inset: 24%; border-color: var(--terra-soft); animation-duration: 18s; }
+.ring.r2{ top:12%; left:12%; right:12%; bottom:12%; border-color: var(--bark-soft); animation-duration: 24s; animation-direction: reverse; }
+.ring.r3{ top:24%; left:24%; right:24%; bottom:24%; border-color: var(--terra-soft); animation-duration: 18s; }
+.ring::before{
+  content:""; position:absolute; top:-3px; left:50%;
+  width: 6px; height: 6px; border-radius:50%;
+  background: var(--terra);
+  transform: translateX(-50%);
+}
+.ring.r2::before{ background: var(--bark-soft); }
+.ring.r3::before{ background: var(--gold); }
 @keyframes spin{ to{ transform: rotate(360deg); } }
 .sponsor-logo{
   position: relative; z-index: 2;
-  width: 50%; aspect-ratio: 1; border-radius:50%;
+  width: 45%; height: 45%; border-radius:50%;
   background: var(--moss-deep);
   color: var(--cream);
   display:flex; align-items:center; justify-content:center;
   font-family: var(--serif); font-style: italic;
-  font-size: clamp(64px, 8vw, 110px);
+  font-size: clamp(56px, 7vw, 96px);
   font-weight: 500;
+  box-shadow: 0 20px 50px -10px rgba(29,36,25,.4);
 }
 
 /* ----- Footer ----- */
@@ -758,6 +1063,9 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   .story-grid{ grid-template-columns: 1fr; gap: 60px; }
   .story-images{ aspect-ratio: 4/3; min-height: 380px; }
 
+  .recap-grid{ grid-template-columns: 1fr; gap: 50px; }
+  .recap-stats{ grid-template-columns: repeat(2, 1fr); }
+
   .sponsor-inner{ grid-template-columns: 1fr; }
   .sponsor-visual{ order: -1; max-width: 280px; }
 
@@ -765,10 +1073,14 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 
   .gallery-grid{
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 220px;
+    grid-auto-rows: 200px;
+    gap: 10px;
   }
-  .g-1, .g-2, .g-3, .g-4, .g-5{ grid-column: span 1; grid-row: span 1;}
-  .g-6{ grid-column: span 2; grid-row: span 1; }
+  .g-1{ grid-column: span 2; grid-row: span 2; } /* 主合影手機放大 */
+  .g-2, .g-3, .g-4, .g-5, .g-7, .g-8, .g-9, .g-10, .g-11{
+    grid-column: span 1; grid-row: span 1;
+  }
+  .g-6, .g-12{ grid-column: span 2; grid-row: span 1; }
 }
 
 @media (max-width: 640px){

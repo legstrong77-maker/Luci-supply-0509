@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+# 部署前置作業（一次性）：
+#   Repo → Settings → Pages → Source 選 "GitHub Actions"
+# 完成後，本 workflow 會在 push 到 main 時自動部署，
+# 網址會出現在 Actions 的 deployment summary。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        # 註：首次使用前需到 Settings → Pages → Source: GitHub Actions
+        # （GitHub 限制：自動啟用需要 admin token，預設 GITHUB_TOKEN 沒此權限）
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
