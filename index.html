@@ -278,56 +278,15 @@
     </div>
 
     <div class="recap-map reveal">
-      <div class="map-frame">
-        <div class="map-ui">
-          <span class="map-dot dot-start"></span>
-          <span class="map-dot dot-end"></span>
-          <span class="map-label start">START</span>
-          <span class="map-label end">END · 石壁山</span>
-          <svg class="map-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-            <!-- Stylised "Garmin route" — colourful gradient stroke -->
-            <defs>
-              <linearGradient id="route" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%"  stop-color="#3a6ea5"/>
-                <stop offset="35%" stop-color="#5fb14b"/>
-                <stop offset="65%" stop-color="#f3d250"/>
-                <stop offset="100%" stop-color="#e8504a"/>
-              </linearGradient>
-              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(29,36,25,.06)" stroke-width="1"/>
-              </pattern>
-            </defs>
-            <rect width="400" height="400" fill="url(#grid)"/>
-            <!-- Trail path resembling the Garmin O-loop -->
-            <path d="M 200 60
-                     C 230 80, 250 110, 240 140
-                     C 230 165, 195 175, 175 185
-                     C 150 200, 130 215, 140 245
-                     C 150 275, 200 285, 230 270
-                     C 270 255, 300 235, 305 200
-                     C 308 170, 280 150, 265 145
-                     C 240 138, 215 130, 200 120
-                     C 185 108, 175 88, 200 60 Z"
-                  fill="none" stroke="url(#route)" stroke-width="6"
-                  stroke-linecap="round" stroke-linejoin="round"
-                  stroke-dasharray="0" />
-            <!-- Side spur to summit -->
-            <path d="M 305 200 C 330 220, 345 250, 340 290"
-                  fill="none" stroke="url(#route)" stroke-width="6"
-                  stroke-linecap="round" stroke-linejoin="round" opacity=".75" />
-            <!-- Markers -->
-            <circle cx="200" cy="60"  r="9" fill="#fff" stroke="#3a6ea5" stroke-width="3"/>
-            <circle cx="340" cy="290" r="9" fill="#fff" stroke="#e8504a" stroke-width="3"/>
-            <text x="200" y="40"  text-anchor="middle" font-family="Inter,Arial" font-size="11" fill="#3a6ea5" letter-spacing="1.5">九芎公廟</text>
-            <text x="340" y="315" text-anchor="middle" font-family="Inter,Arial" font-size="11" fill="#e8504a" letter-spacing="1.5">石壁山頂</text>
-          </svg>
-        </div>
-        <div class="map-legend">
-          <span class="legend-bar"></span>
-          <em>更慢 · SLOWER</em>
-          <em>更快 · FASTER</em>
-        </div>
-      </div>
+      <figure class="map-frame">
+        <img class="map-img" src="images/8E00840A-8FC5-4D4C-9926-42EBFCF5E0C2.jpeg" alt="Garmin GPS 路徑紀錄圖" loading="lazy" />
+        <figcaption>Garmin GPS · 古坑石壁九芎公廟 → 嘉南雲峰大涼亭 → 石壁山 → 好望角</figcaption>
+      </figure>
+
+      <figure class="elevation-frame">
+        <img class="elev-img" src="images/BEC7FC68-E175-4331-AAF2-31AF437F3C03.jpeg" alt="嘉南雲峰高度圖 1,200m – 1,800m" loading="lazy" />
+        <figcaption>高度剖面 · 累計爬升 681 m · 最高 1,795 m</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -355,11 +314,17 @@
 
   <div class="gallery-grid">
     <figure class="g-item g-1 reveal"><img src="images/F91BE103-6327-4BFD-B587-5EAC2D2BF088.jpeg" alt="石壁山 · 小百岳 #55 · 三角點合影" loading="lazy" /><figcaption>石壁山 · 小百岳 #55 · 1,751 m</figcaption></figure>
-    <figure class="g-item g-2 reveal"><img src="images/BCC0AD18-4DA3-40AF-AA95-524099B6B29B.jpeg" alt="孟宗竹海全景" loading="lazy" /><figcaption>孟宗竹海</figcaption></figure>
+    <figure class="g-item g-2 reveal"><img src="images/A6455938-AEEF-4D12-AA1C-9ED16321199C.jpeg" alt="嘉南雲峰步道紀念碑前合影" loading="lazy" /><figcaption>步道入口 · 紀念碑前合影</figcaption></figure>
     <figure class="g-item g-3 reveal"><img src="images/3EEF7875-3D32-44AC-956B-91BA44D3A5C8.jpeg" alt="好望角指示牌" loading="lazy" /><figcaption>好望角 · Cape of Good Hope</figcaption></figure>
-    <figure class="g-item g-4 reveal"><img src="images/55C7889E-FF17-4EA0-B16F-AE154FC57883.jpeg" alt="山頂合影" loading="lazy" /><figcaption>同行夥伴 · 山頂合影</figcaption></figure>
-    <figure class="g-item g-5 reveal"><img src="images/IMG_5419.jpeg" alt="隊伍木階上山" loading="lazy" /><figcaption>竹海中的木階 · 一步一山</figcaption></figure>
+    <figure class="g-item g-4 reveal"><img src="images/B2209818-3C58-4580-B67B-13A5B86FB234.jpeg" alt="孟宗竹海中夥伴合影" loading="lazy" /><figcaption>竹海中的笑容</figcaption></figure>
+    <figure class="g-item g-5 reveal"><img src="images/9D5A524B-8933-4D5F-BE7C-50B7282F3620.jpeg" alt="隊伍上山" loading="lazy" /><figcaption>一步一山 · 同行</figcaption></figure>
     <figure class="g-item g-6 reveal"><img src="images/IMG_5424.jpeg" alt="好望角遠眺" loading="lazy" /><figcaption>好望角 · 遠眺玉山阿里山連稜</figcaption></figure>
+    <figure class="g-item g-7 reveal"><img src="images/8A35FC4A-CE73-4D24-A0A4-388B5D03FD9D.jpeg" alt="涼亭休息合影" loading="lazy" /><figcaption>嘉南雲峰大涼亭 · 中途歇腳</figcaption></figure>
+    <figure class="g-item g-8 reveal"><img src="images/77DA0013-7AA2-418A-BFEB-A651C34664C6.jpeg" alt="嘉南雲峰山頂 1795 公尺" loading="lazy" /><figcaption>嘉南雲峰 · 1,795 m · 雲林最高峰</figcaption></figure>
+    <figure class="g-item g-9 reveal"><img src="images/BCC0AD18-4DA3-40AF-AA95-524099B6B29B.jpeg" alt="孟宗竹海全景" loading="lazy" /><figcaption>孟宗竹海</figcaption></figure>
+    <figure class="g-item g-10 reveal"><img src="images/55C7889E-FF17-4EA0-B16F-AE154FC57883.jpeg" alt="山頂 4 人合影" loading="lazy" /><figcaption>山頂時光</figcaption></figure>
+    <figure class="g-item g-11 reveal"><img src="images/D3FFC90F-53E1-434B-8169-474EB27C7D04.jpeg" alt="嘉南雲峰步道指示牌" loading="lazy" /><figcaption>步道里程指標</figcaption></figure>
+    <figure class="g-item g-12 reveal"><img src="images/IMG_5419.jpeg" alt="竹海中的木階" loading="lazy" /><figcaption>竹海中的木階</figcaption></figure>
   </div>
 </section>
 

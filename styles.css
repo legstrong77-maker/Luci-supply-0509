@@ -678,56 +678,40 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   text-transform: uppercase;
 }
 
-/* Garmin-style map */
-.recap-map{ }
-.map-frame{
-  background: #d8e8d6;
+/* Real Garmin map + elevation profile */
+.recap-map{
+  display: flex; flex-direction: column; gap: 18px;
+}
+.map-frame, .elevation-frame{
+  margin: 0;
+  background: #fff;
   border-radius: 6px;
-  padding: 16px;
-  position: relative;
+  padding: 12px;
   box-shadow: 0 30px 60px -28px rgba(29,36,25,.35);
   border: 1px solid var(--line);
 }
-.map-ui{
-  position:relative;
+.map-img, .elev-img{
+  display:block; width:100%; height:auto;
+  border-radius: 3px;
   background: #e6f0e0;
-  border-radius: 4px;
-  overflow: hidden;
-  aspect-ratio: 1;
 }
-.map-svg{ display:block; width:100%; height:100%; }
-.map-dot{
-  position:absolute; width: 14px; height: 14px;
-  border-radius: 50%; border: 3px solid #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,.25);
-  z-index: 3;
+.map-img{
+  max-height: 520px; object-fit: contain;
+  object-position: center;
 }
-.map-dot.dot-start{ left: 50%; top: 15%; transform: translate(-50%, -50%); background: #3a6ea5; }
-.map-dot.dot-end{ left: 85%; top: 72.5%; transform: translate(-50%, -50%); background: #e8504a; }
-.map-label{
-  position:absolute; z-index:3;
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: .2em; padding: 4px 10px;
-  background: rgba(255,255,255,.92);
-  border-radius: 4px;
-  color: var(--ink);
-  font-weight: 500;
-  text-transform: uppercase;
+.elev-img{
+  max-height: 240px; object-fit: contain;
+  object-position: center;
 }
-.map-label.start{ left: 52%; top: 8%; }
-.map-label.end{ left: 60%; top: 78%; }
-.map-legend{
-  display:flex; align-items:center;
-  gap: 14px; margin-top: 14px;
-  padding: 0 6px;
-  font-family: var(--mono); font-size: 10px;
+.map-frame figcaption,
+.elevation-frame figcaption{
+  font-family: var(--mono);
+  font-size: 11px;
   letter-spacing: .15em;
-  color: var(--ink-soft);
-}
-.map-legend em{ font-style:normal; flex-shrink:0; }
-.legend-bar{
-  flex: 1; height: 6px; border-radius: 3px;
-  background: linear-gradient(90deg, #3a6ea5 0%, #5fb14b 33%, #f3d250 66%, #e8504a 100%);
+  color: var(--bark);
+  text-transform: uppercase;
+  padding: 12px 6px 4px;
+  text-align: center;
 }
 
 /* ----- Quote ----- */
@@ -767,8 +751,8 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   max-width: var(--max); margin: 0 auto;
   display:grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 200px;
-  gap: 16px;
+  grid-auto-rows: 180px;
+  gap: 14px;
 }
 .g-item{
   margin: 0; overflow:hidden; position: relative;
@@ -800,12 +784,19 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 }
 .g-item:hover figcaption{ transform: translateY(0); }
 
-.g-1{ grid-column: span 3; grid-row: span 2; }
-.g-2{ grid-column: span 3; grid-row: span 2; }
-.g-3{ grid-column: span 2; grid-row: span 2; }
-.g-4{ grid-column: span 2; grid-row: span 2; }
-.g-5{ grid-column: span 2; grid-row: span 2; }
-.g-6{ grid-column: span 6; grid-row: span 2; }
+/* 12-cell magazine-style masonry */
+.g-1 { grid-column: span 3; grid-row: span 3; }    /* 主合影：石壁山三角點 */
+.g-2 { grid-column: span 3; grid-row: span 2; }    /* 紀念碑合影 */
+.g-3 { grid-column: span 2; grid-row: span 2; }    /* 好望角指示牌 */
+.g-4 { grid-column: span 4; grid-row: span 2; }    /* 竹海合影（橫長） */
+.g-5 { grid-column: span 2; grid-row: span 3; }    /* 隊伍上山 */
+.g-6 { grid-column: span 4; grid-row: span 2; }    /* 好望角遠眺（橫長） */
+.g-7 { grid-column: span 3; grid-row: span 2; }    /* 涼亭合影 */
+.g-8 { grid-column: span 3; grid-row: span 2; }    /* 嘉南雲峰山頂 */
+.g-9 { grid-column: span 2; grid-row: span 2; }    /* 孟宗竹海 */
+.g-10{ grid-column: span 2; grid-row: span 2; }    /* 4 人合影 */
+.g-11{ grid-column: span 2; grid-row: span 2; }    /* 指示牌 */
+.g-12{ grid-column: span 6; grid-row: span 2; }    /* 木階全寬 */
 
 /* ----- Join ----- */
 .join{
@@ -1035,10 +1026,14 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 
   .gallery-grid{
     grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 220px;
+    grid-auto-rows: 200px;
+    gap: 10px;
   }
-  .g-1, .g-2, .g-3, .g-4, .g-5{ grid-column: span 1; grid-row: span 1;}
-  .g-6{ grid-column: span 2; grid-row: span 1; }
+  .g-1{ grid-column: span 2; grid-row: span 2; } /* 主合影手機放大 */
+  .g-2, .g-3, .g-4, .g-5, .g-7, .g-8, .g-9, .g-10, .g-11{
+    grid-column: span 1; grid-row: span 1;
+  }
+  .g-6, .g-12{ grid-column: span 2; grid-row: span 1; }
 }
 
 @media (max-width: 640px){
