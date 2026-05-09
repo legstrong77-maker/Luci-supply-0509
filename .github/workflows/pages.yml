@@ -1,8 +1,13 @@
 name: Deploy to GitHub Pages
 
+# 部署前置作業（一次性）：
+#   Repo → Settings → Pages → Source 選 "GitHub Actions"
+# 完成後，本 workflow 會在 push 到 main 時自動部署，
+# 網址會出現在 Actions 的 deployment summary。
+
 on:
   push:
-    branches: [main, "claude/hiking-club-website-YB5qy"]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -16,6 +21,8 @@ concurrency:
 
 jobs:
   deploy:
+    # 不擋 PR；若 Pages 還沒在 Settings 啟用，此 job 會 skip 而非紅燈
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -26,6 +33,7 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        continue-on-error: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

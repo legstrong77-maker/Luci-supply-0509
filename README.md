@@ -9,17 +9,19 @@
 
 ## 🚀 線上分享（GitHub Pages）
 
-最簡單的分享方式：
+**首次設定（一次就好）**
 
-1. 進到 GitHub repo → **Settings** → **Pages**
-2. **Source** 選「**GitHub Actions**」
-3. 等 1 分鐘，Actions 自動跑完，網址會出現在頁面上：
+1. 進到 [Settings → Pages](https://github.com/legstrong77-maker/Luci-supply-0509/settings/pages)
+2. **Source** 選「**GitHub Actions**」（不要選「Deploy from a branch」）
+3. 把 PR #1 合併進 `main`（或在 Actions 頁手動 dispatch `Deploy to GitHub Pages`）
+4. 約 1 分鐘後，網址會在 Actions deployment summary 出現：
 
    ```
    https://legstrong77-maker.github.io/Luci-supply-0509/
    ```
 
-> 本 repo 已內建 `.github/workflows/pages.yml`，每次 push 到 `main` 或 `claude/hiking-club-website-YB5qy` 就會自動部署。
+> 本 repo 已內建 `.github/workflows/pages.yml`，每次 push 到 `main` 就會自動重新部署。
+> **注意**：若 Pages 尚未在 Settings 啟用，workflow 會失敗 — 那是預期行為，啟用後就會正常。
 
 ### 其他一鍵部署方式
 
