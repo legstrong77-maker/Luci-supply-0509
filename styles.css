@@ -529,6 +529,36 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   text-align: center;
 }
 .trail-header .section-lead{ margin-left:auto; margin-right:auto; }
+.trail-lead-2{ max-width: 760px !important; margin-top: -10px !important; }
+.trail-header strong{
+  color: var(--moss-deep);
+  font-weight: 600;
+  background: linear-gradient(transparent 70%, rgba(199,107,69,.18) 70%);
+  padding: 0 2px;
+}
+.trail-tags{
+  list-style:none; padding:0; margin: 36px auto 0;
+  display:flex; flex-wrap:wrap; justify-content:center;
+  gap: 10px;
+  max-width: 800px;
+}
+.trail-tags li{
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .15em;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  transition: all .3s var(--ease);
+}
+.trail-tags li:hover{
+  background: var(--moss);
+  color: var(--cream);
+  border-color: var(--moss);
+  transform: translateY(-2px);
+}
 .trail-cards{
   max-width: var(--max); margin: 0 auto;
   display:grid;
