@@ -31,8 +31,8 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true   # 自動啟用 GitHub Pages（不用手動到 Settings 開）
+        # 註：首次使用前需到 Settings → Pages → Source: GitHub Actions
+        # （GitHub 限制：自動啟用需要 admin token，預設 GITHUB_TOKEN 沒此權限）
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
