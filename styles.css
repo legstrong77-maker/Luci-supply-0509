@@ -33,7 +33,14 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html,body{ margin:0; padding:0; }
+html,body{
+  margin:0; padding:0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;        /* iOS-safe alternative to overflow:hidden */
+  -webkit-overflow-x: clip;
+  position: relative;
+}
 html{ scroll-behavior:smooth; }
 body{
   font-family: var(--sans);
@@ -45,6 +52,8 @@ body{
   overflow-x: hidden;
   font-weight: 400;
 }
+/* 任何 section 都不能超過視窗寬，避免 iOS Safari 出現右側空白 */
+section, header, footer { max-width: 100vw; overflow-x: clip; }
 img{ display:block; max-width:100%; height:auto; }
 a{ color:inherit; text-decoration:none; transition: color .3s var(--ease); }
 button{ font-family: inherit; cursor:pointer; border:none; background:none; }
@@ -110,25 +119,73 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   border-bottom: 1px solid var(--line-soft);
 }
 .nav-logo{
-  display:flex; align-items:center; gap:12px;
+  display:flex; align-items:center; gap:14px;
   font-family: var(--serif);
+  transition: transform .4s var(--ease);
 }
+.nav-logo:hover{ transform: translateY(-1px); }
+
+/* Logo mark — circle with mountain silhouette + 璨 character */
 .logo-mark{
-  width: 42px; height: 42px;
+  width: 46px; height: 46px;
   display:flex; align-items:center; justify-content:center;
-  background: var(--moss);
+  background: linear-gradient(135deg, var(--moss) 0%, var(--moss-deep) 100%);
   color: var(--cream);
-  font-size: 20px; font-weight:600;
   border-radius: 50%;
-  letter-spacing: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 14px -4px rgba(29,36,25,.4);
+  animation: logoBreath 4s ease-in-out infinite;
 }
-.nav.scrolled .logo-mark{ background: var(--moss-deep); }
-.logo-text{ display:flex; flex-direction:column; line-height:1.1; }
-.logo-text strong{ font-size: 17px; letter-spacing: .08em; font-weight:600; }
+.nav.scrolled .logo-mark{
+  background: linear-gradient(135deg, var(--moss-deep) 0%, var(--ink) 100%);
+}
+@keyframes logoBreath{
+  0%,100% { transform: scale(1);   box-shadow: 0 4px 14px -4px rgba(29,36,25,.4); }
+  50%     { transform: scale(1.04); box-shadow: 0 6px 20px -4px rgba(62,86,65,.55); }
+}
+.logo-mountains{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  color: var(--cream);
+  opacity: .35;
+}
+.logo-mark-char{
+  position: relative; z-index: 2;
+  font-family: 'Ma Shan Zheng', 'Long Cang', var(--serif);
+  font-size: 22px; font-weight: 400;
+  letter-spacing: 0;
+  color: var(--cream);
+  text-shadow: 0 1px 3px rgba(0,0,0,.25);
+  transform: translateY(-1px);
+}
+
+.logo-text{ display:flex; flex-direction:column; line-height:1; gap: 4px; }
+.logo-cn{
+  font-family: 'Ma Shan Zheng', 'Long Cang', var(--serif);
+  font-size: 26px; font-weight: 400;
+  letter-spacing: .12em;
+  background: linear-gradient(135deg, var(--moss-deep) 0%, var(--terra) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--moss-deep);  /* fallback */
+  line-height: 1;
+  display: inline-block;
+  position: relative;
+}
+.nav:not(.scrolled) .logo-cn{
+  background: linear-gradient(135deg, var(--cream) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--cream);
+}
 .logo-text em{
-  font-style:normal; font-family: var(--mono);
-  font-size: 9.5px; letter-spacing: .25em; opacity:.7;
-  margin-top: 3px;
+  font-style:normal;
+  font-family: var(--mono);
+  font-size: 8.5px; letter-spacing: .28em; opacity:.65;
+  font-weight: 500;
 }
 .nav-links{
   display:flex; gap: 36px;
@@ -240,6 +297,77 @@ button{ font-family: inherit; cursor:pointer; border:none; background:none; }
   font-family: "Cormorant Garamond", var(--serif);
   font-weight: 400;
 }
+
+/* Brushed underline: hand-painted ink stroke that draws in beneath italic word */
+.brushed{
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(120deg, var(--gold) 0%, var(--terra) 60%, var(--terra-soft) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: .08em;
+}
+.brushed::after{
+  content:"";
+  position: absolute;
+  left: -2%; right: -2%; bottom: -.04em;
+  height: .1em;
+  background:
+    radial-gradient(ellipse 100% 60% at 0% 50%, var(--terra) 0%, transparent 60%),
+    radial-gradient(ellipse 100% 60% at 100% 50%, var(--terra) 0%, transparent 60%),
+    linear-gradient(90deg, transparent 0%, var(--terra) 8%, var(--gold) 50%, var(--terra) 92%, transparent 100%);
+  border-radius: 50%;
+  transform: scaleX(0); transform-origin: left;
+  animation: brushDraw 1.6s cubic-bezier(.65,.05,.36,1) 1.6s forwards;
+  opacity: 0;
+  filter: blur(.3px);
+}
+@keyframes brushDraw{
+  0%   { transform: scaleX(0);    opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: scaleX(1);    opacity: .92; }
+}
+
+/* Hero title — per-character stagger reveal */
+.hero-title em,
+.hero-title .serif-italic{
+  display: inline-block;
+}
+.hero-title .char{
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(32px) rotate(-2deg);
+  animation: charIn 1s cubic-bezier(.22,.61,.36,1) forwards;
+}
+@keyframes charIn{
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+/* Floating leaves in hero */
+.leaf-shower{
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.leaf{
+  position: absolute;
+  top: -40px;
+  width: 22px; height: 22px;
+  color: var(--cream);
+  display:block;
+  animation: leafFall 16s linear infinite;
+}
+.leaf svg{ width: 100%; height: 100%; }
+@keyframes leafFall{
+  0%   { transform: translate3d(0, -40px, 0) rotate(0deg);   }
+  25%  { transform: translate3d(20px, 25vh, 0) rotate(180deg); }
+  50%  { transform: translate3d(-15px, 50vh, 0) rotate(360deg); }
+  75%  { transform: translate3d(25px, 75vh, 0) rotate(540deg); }
+  100% { transform: translate3d(0, 110vh, 0) rotate(720deg);   }
+}
+@media (prefers-reduced-motion: reduce){ .leaf-shower{ display:none; } }
 .hero-sub{
   font-size: clamp(14px, 1.3vw, 17px);
   letter-spacing: .08em;
@@ -1085,6 +1213,9 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
 
 @media (max-width: 640px){
   .nav{ padding: 16px var(--pad-x); }
+  .logo-mark{ width: 40px; height: 40px; }
+  .logo-mark-char{ font-size: 19px; }
+  .logo-cn{ font-size: 22px; letter-spacing: .08em; }
   .logo-text em{ display:none; }
   .hero{ align-items: center; padding-top: 120px; }
   .hero-meta{ display:none; }
