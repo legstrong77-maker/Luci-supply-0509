@@ -689,6 +689,7 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   padding: 12px;
   box-shadow: 0 30px 60px -28px rgba(29,36,25,.35);
   border: 1px solid var(--line);
+  position: relative;
 }
 .map-img, .elev-img{
   display:block; width:100%; height:auto;
@@ -712,6 +713,52 @@ section{ padding: clamp(80px, 12vh, 160px) var(--pad-x); position:relative; }
   text-transform: uppercase;
   padding: 12px 6px 4px;
   text-align: center;
+}
+
+/* Leaflet interactive map */
+.leaflet-map{
+  width: 100%;
+  height: 520px;
+  border-radius: 3px;
+  background: #e6f0e0 url('images/8E00840A-8FC5-4D4C-9926-42EBFCF5E0C2.jpeg') center/contain no-repeat;
+  position: relative;
+  z-index: 1;
+}
+.leaflet-map.has-tiles{ background-image: none; }
+.map-hint{
+  position: absolute;
+  top: 22px; left: 22px;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--ink-soft);
+  pointer-events: none;
+  z-index: 1000;
+  transition: opacity .4s var(--ease);
+  border: 1px solid var(--line);
+}
+.leaflet-map.scroll-active + .map-hint{ opacity: 0; }
+/* Override Leaflet attribution font */
+.leaflet-control-attribution{
+  font-family: var(--mono);
+  font-size: 10px !important;
+  background: rgba(255,255,255,.85) !important;
+}
+.leaflet-popup-content{
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.leaflet-popup-content strong{ color: var(--moss-deep); }
+
+@media (max-width: 980px){
+  .leaflet-map{ height: 380px; }
+  .map-hint{ font-size: 9.5px; top: 18px; left: 18px; padding: 4px 10px; }
 }
 
 /* ----- Quote ----- */

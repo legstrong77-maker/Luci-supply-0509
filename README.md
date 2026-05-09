@@ -62,6 +62,24 @@
 
 ---
 
+## 🗺 互動軌跡地圖 — 上傳 GPX
+
+網站的「本次行程紀錄」區塊可以顯示**真實 GPS 軌跡的互動地圖**（OpenStreetMap，可拖曳/縮放）。
+
+**怎麼上傳 GPX：**
+
+1. 到 [健行筆記](https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=5566637) 把 `.gpx` 檔下載到電腦
+   （或從 Garmin Connect → Activity → Export → GPX）
+2. **在 iPhone 上**：把檔案傳到 GitHub。
+   或在電腦上用瀏覽器開：
+   👉 https://github.com/legstrong77-maker/Luci-supply-0509/upload/claude/hiking-club-website-YB5qy
+3. 拖檔上去，**檔名改成 `track.gpx`**（直接放 repo 根目錄，不是 images/）
+4. Commit。網站幾秒內就會自動載入互動軌跡圖。
+
+> 沒上傳前，地圖會顯示「尚未上傳 track.gpx」提示，但 OpenStreetMap 底圖仍可用。
+
+---
+
 ## 🧭 本次紀錄
 
 | 項目 | 數值 |
